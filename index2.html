@@ -5,11 +5,25 @@
   <meta charset="UTF-8">
   <title>index2</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
 
+<script>
+  window.embeddedChatbotConfig = {
+    chatbotId: "wJC2LsF07-w1A8KrFGnc9",
+    domain: "www.chatbase.co"
+  }
+</script>
+<script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="wJC2LsF07-w1A8KrFGnc9"
+        domain="www.chatbase.co"
+        defer>
+</script>
+
+
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">MYWEBSITE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -22,7 +36,7 @@
           <a class="nav-link active" href="#tarifs">Formules et tarifs</a>
           <a class="nav-link active" href="#activités">Activités</a>
           <a class="nav-link active" href="#organigramme">Organigramme</a>
-          <a class="nav-link active" href="#notreequipe">notre_équipe</a>
+          <a class="nav-link active" href="#notreequipe">notre équipe</a>
           <a class="nav-link active" href="#Avis">avis</a>
           <a class="nav-link active" href="#nosinformations">nos informations</a>
           <a class="nav-link active" href="#contact"> nous Contacter</a>
@@ -43,6 +57,7 @@
             Un référencement optimisé pour une meilleure visibilité</p>
         </div>
         <div class="col">
+          <br><br><br>
           <img src="/img/abc.png" alt="abc" class="img-fluid" width="700">
         </div>
       </div>
@@ -194,7 +209,7 @@
               Expert en langages de programmation back-end, il garantit la sécurité et la fiabilité des applications.
             </p>
             <br><br><br>
-            <button type="button" class="btn btn-outline-primary">télécharger la fiche de poste</button>
+            <a href="/mywebsite/parties/backend.html"  class="btn btn-outline-primary">consulter la fiche de poste</a>
             <br>
             <p class="card-text"><small class="text-body-secondary">embauché le 05/09/2020 chez MYWEBSITE</small></p>
           </div>
@@ -208,7 +223,7 @@
               transformer les designs graphiques en pages web fonctionnelles et esthétiques. Mon rôle est essentiel pour
               garantir une expérience utilisateur fluide et agréable.</p>
             <br><br>
-            <button type="button" class="btn btn-outline-primary">télécharger la fiche de poste</button>
+            <a href="/mywebsite/parties/integrator.html"  class="btn btn-outline-primary">consulter la fiche de poste</a>
             <br>
             <p class="card-text"><small class="text-body-secondary">embauché le 06/07/2019 chez MYWEBSITE</small></p>
           </div>
@@ -222,7 +237,7 @@
               communication et de gestion, il coordonne le travail des équipes et garantit le respect des délais et des
               budgets.</p>
             <br><br>
-            <button type="button" class="btn btn-outline-primary">télécharger la fiche de poste</button>
+            <a href="/mywebsite/parties/webdesign.html"  class="btn btn-outline-primary">consulter la fiche de poste</a>
             <br>
             <p class="card-text"><small class="text-body-secondary">embauché le 04/09/2020 chez MYWEBSITE</small></p>
           </div>
@@ -236,7 +251,7 @@
               d'un excellent sens du détail, il veille à la performance et à la compatibilité des interfaces sur tous
               les supports..</p>
             <br><br>
-            <button type="button" class="btn btn-outline-primary">télécharger la fiche de poste</button>
+            <a href="/mywebsite/parties/frontend.html"  class="btn btn-outline-primary">consulter la fiche de poste</a>
             <br>
             <p class="card-text"><small class="text-body-secondary">embauché le 06/04/2018 chez MYWEBSITE</small></p>
           </div>
@@ -250,8 +265,7 @@
               pour une expérience utilisateur optimale. Passionné par les tendances du web design, il propose des
               solutions innovantes et adaptées aux besoins des clients.</p>
             <br>
-            <button type="button" class="btn btn-outline-primary " href="/img/user4">télécharger la fiche de
-              poste</button>
+            <a href="/mywebsite/parties/webdesign.html"  class="btn btn-outline-primary">consulter la fiche de poste</a>
             <br>
             <p class="card-text"><small class="text-body-secondary">embauché le 26/11/2019 chez MYWEBSITE</small></p>
           </div>
@@ -376,14 +390,14 @@
         <form class="row g-3 needs-validation" novalidate>
           <div class="col-md-4">
             <label for="validationCustom01" class="form-label">NOM DE FAMILLE</label>
-            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+            <input type="text" class="form-control" id="validationCustom01" value="" required placeholder="Marc">
             <div class="valid-feedback">
               ok!
             </div>
           </div>
           <div class="col-md-4">
             <label for="validationCustom02" class="form-label">PRENOM</label>
-            <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+            <input type="text" class="form-control" id="validationCustom02" value="" required placeholder="ALTABI">
             <div class="valid-feedback">
               ok!
             </div>
@@ -393,7 +407,7 @@
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend">@email</span>
               <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-                required>
+                required placeholder="exemple@email.com">
               <div class="valid-feedback">
                 choissisez un pseudonyme.
               </div>
@@ -410,7 +424,12 @@
             <label for="validationCustom04" class="form-label">pays</label>
             <select class="form-select" id="validationCustom04" required>
               <option selected disabled value="">Choose...</option>
-              <option>...</option>
+              <option>FRANCE</option>
+              <option>DANEMARK</option>
+              <option>ESPAGNE</option>
+              <option>ALLEMAGNE</option>
+              <option>BELGIQUE</option>
+              <option>SUISSE</option>
             </select>
             <div class="valid-feedback">
               entrer un pays valide
@@ -440,7 +459,7 @@
         </form>
       </section>
 
-      <script src="/js/bootstrap.bundle.min.js"></script>
+      <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
