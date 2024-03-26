@@ -65,8 +65,9 @@
             </div>
         </div>
 </section>
-<section id="tarifs" class="container bg-body-secondary mt-5 mb-4">
+<section id="tarifs" class="container bg-body-primary mt-5 mb-4">
     <h1 class=" text-center">NOS FORMULES ET TARIFS</h1>
+    <br><BR>
     <div class="card-group">
         <div class="row row-cols-1 row-cols-md-3 g-4 ">
             <div class="col">
@@ -74,14 +75,14 @@
                     <img src="img/pictos_oacom-site_vitrine.png" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <button type="button" href="/index.html" class="btn btn-outline-primary">réaliser un Devis</button>
+                            <a href="#contact"> <button type="button"  class="btn btn-outline-primary">réaliser un Devis</button></a>
                             <br>
                             <h5 class="card-title">SITE WEB VITRINE</h5>
                             <p class="card-text">UN site web responsible, esthetique, avec ajouts de vos produits</p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <strong class="text-body-secondary">à partir de 1000$</strong>
+                        <strong class="text-body-secondary">à partir de 900€</strong>
                     </div>
                 </div>
             </div>
@@ -90,7 +91,7 @@
                 <div class="card h-100">
                     <img src="img/marchand.png" class="card-img-top img-fluid" alt="...">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-primary ">
-                        <button type="button" href="/index.html" class="btn btn-outline-primary">réaliser un Devis</button>
+                        <a href="#contact"> <button type="button"  class="btn btn-outline-primary">réaliser un Devis</button></a>
                         <br>
                         <h5 class="card-title">SITE WEB MARCHAND</h5>
                         <p class="card-text">UN site web responsible, esthetique, avec ajouts de vos produits,Un site internet
@@ -99,7 +100,7 @@
                             généralement à la présentation d'une entreprise, de ses produits et/ou de ses services.</p>
                     </div>
                     <div class="card-footer">
-                        <strong class="text-body-secondary">à partir de 500$</strong>
+                        <strong class="text-body-secondary">à partir de 2500€</strong>
                     </div>
                 </div>
             </div>
@@ -107,14 +108,14 @@
                 <div class="card h-100">
                     <img src="img/host.jpg" class="card-img-top img-fluid" alt="...">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                        <button type="button" href="/index.html" class="btn btn-outline-primary">réaliser un Devis</button>
+                        <a href="#contact"> <button type="button"  class="btn btn-outline-primary">réaliser un Devis</button></a>
                         <br>
                         <h5 class="card-title">HEBERGEMENT</h5>
                         <p class="card-text">cette formule permettra à nos clients de bénéficier d'un hébergement et d'une maintenance de qualité,
                             avec un design moderne et adapté à leurs besoins</p>
                     </div>
                     <div class="card-footer">
-                        <strong class="text-body-secondary"> à partir de 50$/month</strong>
+                        <strong class="text-body-secondary"> à partir de 80€/mois</strong>
                     </div>
                 </div>
             </div>
@@ -154,7 +155,8 @@
                         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
                             <div class="accordion-body">
                                 cette formule permettra à nos clients de bénéficier d'un site web vitrine de qualité, avec un design
-                                moderne et adapté à leurs besoins. <br>
+                                moderne et adapté à leurs besoins.
+                                Un site vitrine est un site web qui présente votre entreprise, vos produits ou services, et vos coordonnées. Il sert à vous faire connaître et à générer des leads ou des ventes.<br>
                             </div>
                         </div>
                     </div>
@@ -168,7 +170,7 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="">
                             <div class="accordion-body">
                                 cette formule permettra à nos clients de bénéficier d'un site web marchand de qualité, avec un design
-                                moderne et adapté à leurs besoins. <br>
+                                moderne et adapté à leurs besoins. Un site e-commerce est un site web qui permet de vendre des produits ou services en ligne. La création d'un site e-commerce est plus complexe que celle d'un site vitrine, car elle nécessite de mettre en place un système de paiement sécurisé et de gestion des stocks.<br>
                             </div>
                         </div>
                     </div>
@@ -433,7 +435,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">ville</label>
-                    <input type="text" class="form-control" id="validationCustom03" required placeholder="Toulouse">
+                    <input type="text" class="form-control" id="validationCustom03" required placeholder="Sevran">
                     <div class="valid-feedback">
                         entrer une ville valide
                     </div>
@@ -450,11 +452,17 @@
                 </div>
                 <div class="col-md-3">
                     <label for="validationCustom05" class="form-label">code postale</label>
-                    <input type="text" class="form-control" id="validationCustom05" required placeholder="25400">
+                    <input type="int" class="form-control" id="validationCustom05" required placeholder="91000">
                     <div class="valid-feedback">
                         merci de donner un code postale valide
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <label for="validationCustom05" class="form-label">Votre demande</label>
+                    <input type="text" class="form-control" id="validationCustom05" required placeholder="laisser votre message"  >
+                    <div class="valid-feedback">
+                        merci de laisser votre message
+                    </div>
                 <div class="col-12">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -475,68 +483,36 @@
         <script src="./js/bootstrap.bundle.min.js"></script>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
-<footer class="bg-light text-center text-lg-start">
-    <!-- Grid container -->
-    <div class="container p-4" style="background-color: rgba(0, 0, 0, 0.2);">
-        <!--Grid row-->
+<footer class="footer">
+    <div class="container">
         <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">MYWEBSITE</h5>
-
-                <p>
-                    VOTRE SITE, NOTRE RESPONSABILITE
-                </p>
+            <div class="col-md-4">
+                <h5>MYWEBSITE</h5>
+                <p>VOTRE SITE, NOTRE RESPONSABILITE</p>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0" >
-                <h5 class="text-uppercase">Mentions légales</h5>
-
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="#!" class="text-dark">Conditions d'utilisation</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-dark">Politique de confidentialité</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-dark">Politique de cookies</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-dark">Informations légales</a>
-                    </li>
+            <div class="col-md-4">
+                <h5>Mentions légales</h5>
+                <ul>
+                    <li><a href="#tarifs">Conditions d'utilisation</a></li>
+                    <li><a href="#nosinformations">Politique de confidentialité</a></li>
+                    <li><a href="#">Politique de cookies</a></li>
+                    <li><a href="#nosinformations">Informations légales</a></li>
                 </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase mb-0">Nous contacter</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!" class="text-dark">Tel: 0381845622</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-dark">Email: mywebsite.orga@gmail.com</a>
-                    </li>
-                    <li>
-                        <a href="#!" class="text-dark">Adresse: RUE DES BUIS 25400 PARIS</a>
-                    </li>
+            <div class="col-md-4">
+                <h5>Nous contacter</h5>
+                <ul>
+                    <li><a href="#contact">Tel: 0381845622</a></li>
+                    <li><a href="#contact">Email: mywebsite.orga@gmail.com</a></li>
+                    <li><a href="#contact">Adresse: RUE DES BUIS 25400 PARIS</a></li>
                 </ul>
             </div>
-            <!--Grid column-->
         </div>
-        <!--Grid row-->
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright">© 2023 MYWEBSITE</p>
+            </div>
+        </div>
     </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2023 MYWEBSITE
-    </div>
-    <!-- Copyright -->
 </footer>
 </html>
