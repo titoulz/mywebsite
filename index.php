@@ -7,7 +7,7 @@
     <title>index2</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
 </head>
 
 <body>
@@ -24,12 +24,12 @@ if (isset($_POST['product_id'])) {
     $product_id = $_POST['product_id'];
 
     // Check if the product is already in the cart
-    if (!isset($_SESSION['cart'][$product_id])) {
+    if (!isset($_SESSION['panier'][$product_id])) {
         // If not, add it with quantity 1
-        $_SESSION['cart'][$product_id] = 1;
+        $_SESSION['panier'][$product_id] = 1;
     } else {
         // If it is, increment the quantity
-        $_SESSION['cart'][$product_id]++;
+        $_SESSION['panier'][$product_id]++;
     }
 
     // Redirect back to the index page
@@ -79,7 +79,7 @@ if (isset($_POST['product_id'])) {
                 <a class="nav-link active" href="#nosinformations">nos informations</a>
                 <a class="nav-link active" href="#contact"> nous Contacter</a>
                 <a class="nav-link active" href="public/parties/connexion.php"> se connecter</a>
-                <a class="nav-link active" href="public/parties/register.php"> s'enregistrer</a>
+                <a class="nav-link active" href="../mywebsite/parties/register.php"> s'enregistrer</a>
                 <a class="nav-link active" href="public/parties/panier.php"> Mon panier</a>
             </div>
         </div>
@@ -108,23 +108,7 @@ if (isset($_POST['product_id'])) {
 <section id="tarifs" class="container bg-body-primary mt-5 mb-4">
     <h1 class=" text-center"> 🥇NOS FORMULES ET TARIFS🥇</h1>
     <br><BR>
-    <div class="card h-100">
-        <img src="img/pictos_oacom-site_vitrine.png" class="card-img-top img-fluid" alt="...">
-        <div class="card-body">
-            <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                <!-- ... -->
-            </div>
-        </div>
-        <div class="card-footer">
-            <strong class="text-body-secondary">à partir de 900€</strong>
-            <!-- Add to cart form -->
-            <form action="/public/parties/add_to_cart.php" method="post">
-                <input type="hidden" name="product_id" value="1"> <!-- Replace with actual product ID -->
-                <input type="submit" value="Add to cart">
-            </form>
-        </div>
-    </div>
-    <div class="card-group">
+  <div class="card-group">
         <div class="row row-cols-1 row-cols-md-3 g-4 ">
             <div class="col">
                 <div class="card h-100">
@@ -164,6 +148,10 @@ if (isset($_POST['product_id'])) {
                 <div class="card h-100">
                     <img src="img/host.jpg" class="card-img-top img-fluid" alt="...">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <form action="public/parties/add_to_cart.php" method="post">
+                            <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with the actual product ID -->
+                            <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                        </form>
                         <a href="#contact"> <button type="button"  class="btn btn-outline-primary">réaliser un Devis</button></a>
                         <br>
                         <h5 class="card-title">HEBERGEMENT</h5>
@@ -412,6 +400,23 @@ if (isset($_POST['product_id'])) {
                 <br>
                 <br>
                 <section>
+                    <?php
+                    require_once '../mywebsite/private/db-config.php';
+
+                    $pdo = getConnexion();
+                    $stmt = $pdo->prepare("SELECT u.pseudo, c.commentaire, c.note FROM commentaires c JOIN users u ON c.user_id = u.id");
+                    $stmt->execute();
+                    $commentaires = $stmt->fetchAll();
+
+                    foreach ($commentaires as $commentaire) {
+                        echo '<div class="card">';
+                        echo '<h5 class="card-header">' . htmlspecialchars($commentaire['pseudo']) . ' - Note : ' . htmlspecialchars($commentaire['note']) . '/5</h5>';
+                        echo '<div class="card-body">';
+                        echo '<p class="card-text">' . htmlspecialchars($commentaire['commentaire']) . '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                    ?>
                     <ul class="list-group">
                         <li class="list-group-item">
                             <div class="customer-notice">
@@ -472,6 +477,7 @@ if (isset($_POST['product_id'])) {
                     </ul>
                 </section>
             </section>
+            <a href="public/parties/ajout_commentaire.php" class="btn btn-primary">Ajouter un commentaire</a>
         </section>
         <br>
         <br>
