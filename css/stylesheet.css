@@ -289,3 +289,8 @@ ul li {
 ul li {
     display: block !important;
 }
+section {
+    /* Assurez-vous que chaque section a une hauteur définie ou du contenu qui lui donne une hauteur, et qu'elle n'est pas positionnée de manière à se chevaucher avec d'autres sections. */
+    height: auto;
+    position: relative;
+}

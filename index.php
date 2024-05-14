@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
 
@@ -8,6 +9,39 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="css/stylesheet.css">
 </head>
+
+<body>
+<?php
+session_start();
+// Check if the user is logged in
+if (isset($_SESSION['pseudo'])) {
+    // If the user is logged in, display their pseudo at the top of the page
+    echo "<p>Bienvenue, " . htmlspecialchars($_SESSION['pseudo']) . "!</p>";
+}
+
+// Check if the product ID is provided
+if (isset($_POST['product_id'])) {
+    $product_id = $_POST['product_id'];
+
+    // Check if the product is already in the cart
+    if (!isset($_SESSION['cart'][$product_id])) {
+        // If not, add it with quantity 1
+        $_SESSION['cart'][$product_id] = 1;
+    } else {
+        // If it is, increment the quantity
+        $_SESSION['cart'][$product_id]++;
+    }
+
+    // Redirect back to the index page
+    header('Location: index.php');
+    exit;
+}
+ ?>
+
+
+<?php if (isset($_SESSION['pseudo'])): ?>
+<p>Welcome, <?php echo $_SESSION['pseudo']; ?></p>
+<?php endif; ?>
 
 <script>
     window.embeddedChatbotConfig = {
@@ -44,6 +78,9 @@
                 <a class="nav-link active" href="#notrehistoire">Notre Histoire</a>
                 <a class="nav-link active" href="#nosinformations">nos informations</a>
                 <a class="nav-link active" href="#contact"> nous Contacter</a>
+                <a class="nav-link active" href="public/parties/connexion.php"> se connecter</a>
+                <a class="nav-link active" href="public/parties/register.php"> s'enregistrer</a>
+                <a class="nav-link active" href="public/parties/panier.php"> Mon panier</a>
             </div>
         </div>
     </div>
@@ -55,13 +92,12 @@
                 <br><br><br>
                 <h1>MYWEBSITE</h1>
                 <h2> Votre site web, notre responsabilité</h2>
-                <p><strong>MyWebsite : </strong>
                     <ul>
                     Des solutions web sur-mesure et évolutives</ul>
                    <ul> Un accompagnement personnalisé tout au long de votre projet</ul>
-                <ul>    Un<strong> design moderne et responsive </strong></ul>
-                <ul>  Des technologies de pointe pour un <strong> site performant</strong></ul>
-                <ul>    Un référencement optimisé pour une <strong>meilleure visibilité</strong></p></ul>
+                <ul>    Un design moderne et responsive </ul>
+                <ul>  Des technologies de pointe pour un site performant</ul>
+                <ul>    Un référencement optimisé pour une meilleure visibilité</p></ul>
             </div>
             <div class="col">
                 <br><br><br>
@@ -72,6 +108,22 @@
 <section id="tarifs" class="container bg-body-primary mt-5 mb-4">
     <h1 class=" text-center"> 🥇NOS FORMULES ET TARIFS🥇</h1>
     <br><BR>
+    <div class="card h-100">
+        <img src="img/pictos_oacom-site_vitrine.png" class="card-img-top img-fluid" alt="...">
+        <div class="card-body">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <!-- ... -->
+            </div>
+        </div>
+        <div class="card-footer">
+            <strong class="text-body-secondary">à partir de 900€</strong>
+            <!-- Add to cart form -->
+            <form action="/public/parties/add_to_cart.php" method="post">
+                <input type="hidden" name="product_id" value="1"> <!-- Replace with actual product ID -->
+                <input type="submit" value="Add to cart">
+            </form>
+        </div>
+    </div>
     <div class="card-group">
         <div class="row row-cols-1 row-cols-md-3 g-4 ">
             <div class="col">
@@ -285,7 +337,7 @@
                                 Expert en langages de programmation back-end, il garantit  sécurité et  fiabilité
                             </p>
                             <br><br><br><br><br><br>
-                            <a href="/parties/backend.html"  class="btn btn-outline-primary">consulter le detail </a>
+                            <a href="public/parties/backend.html" class="btn btn-outline-primary">consulter le detail </a>
                             <br>
                         </div>
                     </div>
@@ -300,7 +352,7 @@
                             <p class="card-text">Pilote les projets web de la conception à la livraison. Doté d'excellentes capacités de
                                 communication et de gestion, il coordonne le travail des équipes et garantit le respect des délais et des
                                 budgets.</p>
-                            <a href="/parties/manager.html"  class="btn btn-outline-primary">consulter le detail</a>
+                            <a href="public/parties/manager.html" class="btn btn-outline-primary">consulter le detail</a>
                             <br>
                         </div>
                     </div>
@@ -315,7 +367,7 @@
                             <p class="card-text">Donne vie aux designs web en code HTML, CSS et JavaScript. Doté d'une grande rigueur et
                                 d'un excellent sens du détail, il veille à la performance et à la compatibilité des interfaces sur tous
                                 les supports..</p>
-                            <a href="/parties/frontend.html"  class="btn btn-outline-primary">consulter le detail</a>
+                            <a href="public/parties/frontend.html" class="btn btn-outline-primary">consulter le detail</a>
                             <br>
                         </div>
                     </div>
@@ -331,7 +383,7 @@
                             <p class="card-text"> Crée des interfaces web intuitives et esthétiques, alliant créativité et technicité
                                 pour une expérience utilisateur optimale. Passionné par les tendances du web design, il propose des
                                 solutions innovantes et adaptées aux besoins des clients.</p>
-                            <a href="/parties/webdesign.html"  class="btn btn-outline-primary">consulter le detail</a>
+                            <a href="public/parties/webdesign.html" class="btn btn-outline-primary">consulter le detail</a>
                             <br>
                         </div>
                     </div>
@@ -344,7 +396,7 @@
                             <h7 class="card-subtitle mb-2 text-muted">WEB INTEGRATOR</h7>
                             <br>
                             <p class="card-text">Spécialiste de la construction web invisible, transformer les designs graphiques en pages web fonctionnelles et esthétiques. </p>
-                            <a href="/parties/integrator.html"  class="btn btn-outline-primary">consulter le detail</a>
+                            <a href="public/parties/integrator.html" class="btn btn-outline-primary">consulter le detail</a>
                             <br>
                         </div>
                     </div>
@@ -526,7 +578,7 @@
                         </li>
                         <li style="--accent-color:#1B5F8C">
                             <div class="date">2018</div>
-                            <div class="title">Recrutement de notyre developpeuse web front-end</div>
+                            <div class="title">Recrutement de notre developpeuse web front-end</div>
                             <div class="descr">En 2018, l'équipe s'agrandit avec l'arrivée de JASMINA ACAI, notre premier développeur web front-end. Son expertise en developpement FRONT-END a été un atout majeur pour le développement de sites web performants et évolutifs.</div>
                         </li>
                         <li style="--accent-color:#4CADAD">
@@ -609,7 +661,7 @@
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@email</span>
                         <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend"
-                               required placeholder="exemple@email.com">
+                               required placeholder="marc.defresne@email.com">
                         <div class="valid-feedback">
                             choissisez un pseudonyme.
                         </div>
