@@ -79,7 +79,7 @@ if (isset($_POST['product_id'])) {
                 <a class="nav-link active" href="#nosinformations">nos informations</a>
                 <a class="nav-link active" href="#contact"> nous Contacter</a>
                 <a class="nav-link active" href="public/parties/connexion.php"> se connecter</a>
-                <a class="nav-link active" href="../mywebsite/parties/register.php"> s'enregistrer</a>
+                <a class="nav-link active" href="public/parties/register.php"> s'enregistrer</a>
                 <a class="nav-link active" href="public/parties/panier.php"> Mon panier</a>
             </div>
         </div>
@@ -115,6 +115,10 @@ if (isset($_POST['product_id'])) {
                     <img src="img/pictos_oacom-site_vitrine.png" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                            <form action="public/parties/add_to_cart.php" method="post">
+                                <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with the actual product ID -->
+                                <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                            </form>
                             <a href="#contact"> <button type="button"  class="btn btn-outline-primary">réaliser un Devis</button></a>
                             <br>
                             <h5 class="card-title">SITE WEB VITRINE</h5>
@@ -131,6 +135,10 @@ if (isset($_POST['product_id'])) {
                 <div class="card h-100">
                     <img src="img/marchand.png" class="card-img-top img-fluid" alt="...">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center text-primary ">
+                        <form action="public/parties/add_to_cart.php" method="post">
+                            <input type="hidden" name="product_id" value="2"> <!-- Replace 1 with the actual product ID -->
+                            <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                        </form>
                         <a href="#contact"> <button type="button"  class="btn btn-outline-primary">réaliser un Devis</button></a>
                         <br>
                         <h5 class="card-title">SITE WEB MARCHAND</h5>
@@ -149,7 +157,7 @@ if (isset($_POST['product_id'])) {
                     <img src="img/host.jpg" class="card-img-top img-fluid" alt="...">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center">
                         <form action="public/parties/add_to_cart.php" method="post">
-                            <input type="hidden" name="product_id" value="1"> <!-- Replace 1 with the actual product ID -->
+                            <input type="hidden" name="product_id" value="3"> <!-- Replace 1 with the actual product ID -->
                             <button type="submit" class="btn btn-primary">Ajouter au panier</button>
                         </form>
                         <a href="#contact"> <button type="button"  class="btn btn-outline-primary">réaliser un Devis</button></a>

@@ -6,17 +6,41 @@ error_reporting(E_ALL);
 
 session_start();
 
+// Check if the user is logged in
+if (!isset($_SESSION['pseudo'])) {
+    echo "You must be logged in to add items to the cart.";
+    exit;
+}
+
 // Check if the product ID is provided
 if (isset($_POST['product_id'])) {
     $product_id = $_POST['product_id'];
+    echo "Product ID: " . $product_id;
+    // rest of the code...
+}
+
+// Check if the product ID is provided
+if (isset($_POST['product_id'])) {
+    $product_id = $_POST['product_id'];
+    echo "Product ID: " . $product_id;
+    // rest of the code...
+}
 
     // Get product details from the database
     require_once '../../private/db-config.php';
     $pdo = getConnexion();
+    // Get product details from the database
     $stmt = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
     $stmt->execute([$product_id]);
     $product = $stmt->fetch();
 
+    if ($product) {
+        // Product exists, proceed with adding to cart
+        // ...
+    } else {
+        echo "Product not found.";
+        exit;
+    }
     // Debug: Afficher le produit
     var_dump($product);
 
@@ -55,5 +79,4 @@ if (isset($_POST['product_id'])) {
         echo "User not found.";
         exit;
      }
-}
 ?>

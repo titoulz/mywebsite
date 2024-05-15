@@ -27,10 +27,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <!DOCTYPE html>
+<head>
+    <title>Mon Panier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<style>
+    body {
+        padding-top: 70px; /* Adjust this value as needed */
+    }
+</style>
 <html lang="fr">
 <head>
     <title>Connexion</title>
 </head>
+<nav class="navbar navbar-expand-lg bg-body-secondary fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><strong>>_MYWEBSITE</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#Accueil">Accueil</a>
+                <a class="nav-link active" href="../../index.php/#tarifs">Formules et tarifs</a>
+                <a class="nav-link active" href="../../index.php/#activités">prestations</a>
+                <a class="nav-link active" href="../../index.php/#noslocaux"> Nos locaux et horaires</a>
+                <a class="nav-link active" href="../../index.php/#organigramme">Organigramme</a>
+                <a class="nav-link active" href="../../index.php/#notreequipe">notre équipe</a>
+                <a class="nav-link active" href="../../index.php/#Avis">avis</a>
+                <a class="nav-link active" href="../../index.php/#apropos">A propos de Nous</a>
+                <a class="nav-link active" href="../../index.php/#notrehistoire">Notre Histoire</a>
+                <a class="nav-link active" href=../../index.php/#nosinformations">nos informations</a>
+                <a class="nav-link active" href="../../index.php/#contact"> nous Contacter</a>
+                <a class="nav-link active" href="connexion.php"> se connecter</a>
+                <a class="nav-link active" href="public/parties/register.php"> s'enregistrer</a>
+            </div>
+        </div>
+    </div>
+</nav>
 <body>
 <form method="post">
     <h2>Connexion</h2>
