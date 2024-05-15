@@ -1,25 +1,21 @@
 <?php
 session_start();
-
-// Check if the user is logged in
-if (!isset($_SESSION['pseudo'])) {
-    echo "You must be logged in to remove items from the cart.";
-    exit;
-}
-
-// Check if the product ID is provided
-if (!isset($_POST['product_id'])) {
-    echo "Product ID is required.";
-    exit;
-}
-
-$product_id = $_POST['product_id'];
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Connect to the database
 require_once '../../private/db-config.php';
 $pdo = getConnexion();
 
-// Get user_id from the database using the username
+// Check if product_id is set in the POST request
+if (!isset($_POST['product_id'])) {
+    exit('No product id provided.');
+}
+
+$product_id = $_POST['product_id'];
+$pseudo = $_SESSION['pseudo'];
+
+// Fetch user_id from the database using the pseudo
 $stmt = $pdo->prepare("SELECT id FROM users WHERE pseudo = ?");
 $stmt->execute([$_SESSION['pseudo']]);
 $user = $stmt->fetch();
@@ -27,14 +23,13 @@ $user = $stmt->fetch();
 if ($user) {
     $user_id = $user['id'];
 
-    // Remove the product from the cart
-    $stmt = $pdo->prepare("DELETE FROM panier WHERE user_id = ? AND product_id = ?");
-    $stmt->execute([$user_id, $product_id]);
+    // Prepare the SQL statement to remove the item from the cart
+    $stmt = $pdo->prepare("DELETE FROM panier WHERE product_id = ? AND user_id = ?");
+    $stmt->execute([$product_id, $user_id]);
 
-    // Redirect back to the cart page
+    // Redirect back to the panier.php page
     header('Location: panier.php');
-} else {
-    echo "User not found.";
     exit;
+} else {
+    exit('User not found.');
 }
-?>

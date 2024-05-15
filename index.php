@@ -78,9 +78,16 @@ if (isset($_POST['product_id'])) {
                 <a class="nav-link active" href="#notrehistoire">Notre Histoire</a>
                 <a class="nav-link active" href="#nosinformations">nos informations</a>
                 <a class="nav-link active" href="#contact"> nous Contacter</a>
-                <a class="nav-link active" href="public/parties/connexion.php"> se connecter</a>
-                <a class="nav-link active" href="public/parties/register.php"> s'enregistrer</a>
-                <a class="nav-link active" href="public/parties/panier.php"> Mon panier</a>
+                <?php if (!isset($_SESSION['pseudo'])): ?>
+                    <a class="nav-link active" href="/public/parties/connexion.php"> se connecter </a>
+                <?php endif; ?>
+                <?php if (!isset($_SESSION['pseudo'])): ?>
+                    <a class="nav-link active" href="/public/parties/register.php"> s'enregistrer  <i class="bi-person"></i> </a>
+                <?php endif; ?>
+                </a>
+                <a class="nav-link active" href="public/parties/panier.php">
+                    <i class="bi-cart"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -101,7 +108,7 @@ if (isset($_POST['product_id'])) {
             </div>
             <div class="col">
                 <br><br><br>
-                <img src="/img/abc.png" alt="abc" class="img-fluid" width="700">
+                <img src="/img/abc.png" alt="abc" class="img-fluid" width="800">
             </div>
         </div>
 </section>
@@ -415,74 +422,22 @@ if (isset($_POST['product_id'])) {
                     $stmt = $pdo->prepare("SELECT u.pseudo, c.commentaire, c.note FROM commentaires c JOIN users u ON c.user_id = u.id");
                     $stmt->execute();
                     $commentaires = $stmt->fetchAll();
-
+                    function displayStars($note) {
+                        $stars = '';
+                        for ($i = 0; $i < $note; $i++) {
+                            $stars .= '⭐';
+                        }
+                        return $stars;
+                    }
                     foreach ($commentaires as $commentaire) {
                         echo '<div class="card">';
-                        echo '<h5 class="card-header">' . htmlspecialchars($commentaire['pseudo']) . ' - Note : ' . htmlspecialchars($commentaire['note']) . '/5</h5>';
+                        echo '<h5 class="card-header">' . htmlspecialchars($commentaire['pseudo']) . ' - Note : ' . displayStars($commentaire['note']) . '</h5>';
                         echo '<div class="card-body">';
                         echo '<p class="card-text">' . htmlspecialchars($commentaire['commentaire']) . '</p>';
                         echo '</div>';
                         echo '</div>';
                     }
                     ?>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <div class="customer-notice">
-                                <h3>MICHEL DELGRANDE ★★★★</h3>
-                                <p>"trés bien."</p>
-                                <div class="card-footer">
-                                    <strong class="text-body-secondary">posté le 04/08/07 par MICHEL DELGRANDE</strong>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="customer-notice">
-                                <h3>IBRAHIM MEDA ★★★</h3>
-                                <p>"J'ai fait appel à MYWEBSITE pour créer mon site marchand. Je suis très satisfaite de leur travail.
-                                    Le site est très bien conçu, il est facile à utiliser et il est parfaitement adapté à mes besoins.
-                                    Le service client est également très réactif et à l'écoute. Je recommande vivement MYONLINEWEBSITE à
-                                    tous ceux qui souhaitent créer un site marchand professionnel."</p>
-                                <div class="card-footer">
-                                    <strong class="text-body-secondary">posté le 07/09/07 par IBRAHIM MELA</strong>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="customer-notice">
-                                <h3>JEANNE BIRK★★★★</h3>
-                                <p>"J'ai été très satisfait des services de MYWEBSITE. Ils ont été très professionnels et à l'écoute
-                                    de mes besoins. Le site qu'ils ont créé est exactement ce que je voulais. Je recommande vivement
-                                    leurs services."</p>
-                                <div class="card-footer">
-                                    <strong class="text-body-secondary">posté le 07/09/07 par JEANNE BIRK</strong>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="customer-notice">
-                                <h3>MEDHI AKABA ★★★★★</h3>
-                                <p>"J'ai fait appel à MYWEBSITE pour créer mon site marchand. Je suis très satisfait de leur travail.
-                                    Le site est très bien conçu, il est facile à utiliser et il est parfaitement adapté à mes besoins.
-                                    Les délais de livraison ont été respectés et le service client est très réactif. Je recommande
-                                    vivement MYONLINEWEBSITE.."</p>
-                                <div class="card-footer">
-                                    <strong class="text-body-secondary">posté le 07/09/07 par MEDHI AKABA</strong>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="customer-notice">
-                                <h3>JEAN DANIEL ★★★★</h3>
-                                <p>"Je travaille avec MYWEBSITE depuis plusieurs années et je suis toujours très satisfait de leur
-                                    collaboration. Ils sont toujours à l'écoute de mes besoins et ils proposent des solutions adaptées à
-                                    mes objectifs. Je recommande vivement MYONLINEWEBSITE à tous ceux qui souhaitent créer ou développer
-                                    leur site marchand."</p>
-                                <div class="card-footer">
-                                    <strong class="text-body-secondary">posté le 07/09/07 par JEAN DANIEL</strong>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </section>
             </section>
             <a href="public/parties/ajout_commentaire.php" class="btn btn-primary">Ajouter un commentaire</a>

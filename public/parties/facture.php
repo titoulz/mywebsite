@@ -4,20 +4,35 @@ session_start();
 // Connect to the database
 require_once '../../private/db-config.php';
 $pdo = getConnexion();
+$pseudo = $_SESSION['pseudo'];
 
-// Check if pseudo is set in the session
-if (!isset($_SESSION['pseudo'])) {
-    // Handle the case where pseudo is not set, e.g., redirect to login or show a message
+// Fetch the user data from the database
+$stmt = $pdo->prepare("SELECT * FROM users WHERE pseudo = ?");
+$stmt->execute([$pseudo]);
+$user = $stmt->fetch();
+
+// Check if a user was found
+if ($user) {
+    // Store the user's id in the session
+    $_SESSION['user_id'] = $user['id'];
+} else {
+    // Handle the case where no user was found, e.g., show an error message
+    exit('No user found with that username.');
+}
+
+// Check if user_id is set in the session
+if (!isset($_SESSION['user_id'])) {
+    // Handle the case where user_id is not set, e.g., redirect to login or show a message
     exit('You must be logged in to view your invoice.');
 }
 
-$pseudo = $_SESSION['pseudo'];
+$user_id = $_SESSION['user_id'];
 
 // Prepare the SQL statement to fetch the cart items
 $stmt = $pdo->prepare("SELECT p.product_name, p.product_price, c.quantity FROM panier c JOIN products p ON c.product_id = p.product_id WHERE c.user_id = ?");
 
 // Execute the SQL statement
-$stmt->execute([$pseudo]);
+$stmt->execute([$user_id]);
 
 // Fetch all the cart items
 $cartItems = $stmt->fetchAll();
@@ -68,11 +83,11 @@ foreach ($cartItems as $item) {
     </style>
 </head>
 <body>
-<h2>Facture pour <?php echo htmlspecialchars($pseudo); ?></h2>
+<h2 class="text-center">Facture commande client: <?php echo htmlspecialchars($pseudo); ?></h2>
 <table>
     <tr>
         <th>Product</th>
-        <th>Price</th>
+        <th>Price €</th>
         <th>Quantity</th>
     </tr>
     <?php foreach ($cartItems as $item): ?>
@@ -83,9 +98,12 @@ foreach ($cartItems as $item) {
         </tr>
     <?php endforeach; ?>
     <tr>
-        <td colspan="2">Total</td>
+        <td colspan="2">Total €.</td>
         <td><?php echo htmlspecialchars($totalPrice); ?></td>
     </tr>
+    <p>Thank you for shopping with us!</p>
+    <p>&copy; 2023 My Website</p>
+<a href="../../index.php" class="btn btn-primary">Retour à l'accueil</a>
     <div class="barcode-container">
         <img src="../../img/pngtree-the-barcode-png-image_8043599.png" alt="Barcode">
     </div>

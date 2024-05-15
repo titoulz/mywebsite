@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Connect to the database
 require_once '../../private/db-config.php';
 $pdo = getConnexion();
@@ -62,7 +65,7 @@ if ($user) {
         </style>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="../../index.php/#tarifs#Accueil">Accueil</a>
+                <a class="nav-link active" aria-current="page" href="../../index.php/#Accueil">Accueil</a>
                 <a class="nav-link active" href="../../index.php/#tarifs">Formules et tarifs</a>
                 <a class="nav-link active" href="../../index.php/#tarifs#activités">prestations</a>
                 <a class="nav-link active" href="../../index.php/#tarifs#noslocaux"> Nos locaux et horaires</a>
@@ -75,7 +78,6 @@ if ($user) {
                 <a class="nav-link active" href="../../index.php/#tarifs#contact"> nous Contacter</a>
                 <a class="nav-link active" href="public/parties/connexion.php"> se connecter</a>
                 <a class="nav-link active" href="../parties/register.php"> s'enregistrer</a>
-                <a class="nav-link active" href="public/parties/panier.php"> Mon panier</a>
             </div>
         </div>
     </div>
@@ -103,7 +105,7 @@ if ($user) {
             <td><?php echo htmlspecialchars($item['total']); ?></td>
             <td>
                 <form action="remove_from_cart.php" method="post">
-                    <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($item['product_id']); ?>">
+                    <input type="hidden" name="product_id" value="<?php echo $item['product_id'] !== null ? htmlspecialchars($item['product_id']) : ''; ?>">
                     <input type="submit" value="Remove">
                 </form>
             </td> <!-- New Remove button -->

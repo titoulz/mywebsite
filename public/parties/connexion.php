@@ -30,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Mon Panier</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <style>
@@ -51,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#Accueil">Accueil</a>
+                <a class="nav-link active" aria-current="page" href="../../index.php">Accueil</a>
                 <a class="nav-link active" href="../../index.php/#tarifs">Formules et tarifs</a>
                 <a class="nav-link active" href="../../index.php/#activités">prestations</a>
                 <a class="nav-link active" href="../../index.php/#noslocaux"> Nos locaux et horaires</a>
@@ -62,8 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a class="nav-link active" href="../../index.php/#notrehistoire">Notre Histoire</a>
                 <a class="nav-link active" href=../../index.php/#nosinformations">nos informations</a>
                 <a class="nav-link active" href="../../index.php/#contact"> nous Contacter</a>
+                <?php if (!isset($_SESSION['pseudo'])): ?>
                 <a class="nav-link active" href="connexion.php"> se connecter</a>
-                <a class="nav-link active" href="public/parties/register.php"> s'enregistrer</a>
+                <?php endif; ?>
+                <?php if (!isset($_SESSION['pseudo'])): ?>
+                    <a class="nav-link active" href="register.php"> s'enregistrer  <i class="bi-person"></i> </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -76,4 +81,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit">Vérifier</button>
 </form>
 </body>
+
 </html>

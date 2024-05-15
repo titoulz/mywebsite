@@ -66,8 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a class="nav-link active" href="../../index.php/#notrehistoire">Notre Histoire</a>
                     <a class="nav-link active" href=../../index.php/"#nosinformations">nos informations</a>
                     <a class="nav-link active" href="../../index.php/#contact"> nous Contacter</a>
-                    <a class="nav-link active" href="connexion.php"> se connecter</a>
-                    <a class="nav-link active" href="public/parties/register.php"> s'enregistrer</a>
+                    <?php if (!isset($_SESSION['pseudo'])): ?>
+                        <a class="nav-link active" href="connexion.php"> se connecter</a>
+                    <?php endif; ?>
+                    <?php if (!isset($_SESSION['pseudo'])): ?>
+                        <a class="nav-link active" href="register.php"> s'enregistrer  <i class="bi-person"></i> </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
