@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>index2</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/stylesheet.css">
 </head>
 
@@ -440,7 +440,7 @@ if (isset($_POST['product_id'])) {
                     ?>
                 </section>
             </section>
-            <a href="public/parties/ajout_commentaire.php" class="btn btn-primary">Ajouter un commentaire</a>
+            <a href="/public/parties/ajout_commentaire.php" class="btn btn-primary">Ajouter un commentaire</a>
         </section>
         <br>
         <br>
